@@ -140,63 +140,23 @@
 			<CardContent class="space-y-6">
 				<div>
 					<h4 class="font-semibold mb-2">JavaScript / React</h4>
-					<pre class="bg-muted p-4 rounded-lg overflow-x-auto text-sm"><code>const createDeliveryLink = (pickup, dropoff, partnerId, callbackUrl) => {
-  const params = new URLSearchParams({
-    pickup_address: pickup,
-    dropoff_address: dropoff,
-    partner_id: partnerId,
-    callback_url: callbackUrl
-  });
-  
-  return `https://app.velourcity.com/delivery?${params.toString()}`;
-};
-
-// Usage
-const deliveryUrl = createDeliveryLink(
-  "123 Restaurant St, New York, NY 10001",
-  "456 Customer Ave, New York, NY 10002", 
-  "your_partner_id",
-  "https://yourapp.com/delivery/complete"
-);
-
-// Open in new window/tab
-window.open(deliveryUrl, '_blank');</code></pre>
+				<div class="bg-muted p-4 rounded-lg">
+					<p class="text-sm text-muted-foreground italic">TODO: Add JavaScript/React code example for creating delivery links</p>
+				</div>
 				</div>
 				
 				<div>
 					<h4 class="font-semibold mb-2">iOS (Swift)</h4>
-					<pre class="bg-muted p-4 rounded-lg overflow-x-auto text-sm"><code>import UIKit
-
-func openDeliveryLink(pickup: String, dropoff: String, partnerId: String, callbackUrl: String) {
-    var components = URLComponents(string: "https://app.velourcity.com/delivery")!
-    components.queryItems = [
-        URLQueryItem(name: "pickup_address", value: pickup),
-        URLQueryItem(name: "dropoff_address", value: dropoff),
-        URLQueryItem(name: "partner_id", value: partnerId),
-        URLQueryItem(name: "callback_url", value: callbackUrl)
-    ]
-    
-    if let url = components.url {
-        UIApplication.shared.open(url)
-    }
-}</code></pre>
+					<div class="bg-muted p-4 rounded-lg">
+						<p class="text-sm text-muted-foreground italic">TODO: Add iOS Swift code example for opening delivery deeplinks</p>
+					</div>
 				</div>
 				
 				<div>
 					<h4 class="font-semibold mb-2">Android (Java)</h4>
-					<pre class="bg-muted p-4 rounded-lg overflow-x-auto text-sm"><code>import android.content.Intent;
-import android.net.Uri;
-
-public void openDeliveryLink(String pickup, String dropoff, String partnerId, String callbackUrl) {
-    Uri.Builder builder = Uri.parse("https://app.velourcity.com/delivery").buildUpon()
-        .appendQueryParameter("pickup_address", pickup)
-        .appendQueryParameter("dropoff_address", dropoff)
-        .appendQueryParameter("partner_id", partnerId)
-        .appendQueryParameter("callback_url", callbackUrl);
-    
-    Intent intent = new Intent(Intent.ACTION_VIEW, builder.build());
-    startActivity(intent);
-}</code></pre>
+					<div class="bg-muted p-4 rounded-lg">
+						<p class="text-sm text-muted-foreground italic">TODO: Add Android Java code example for opening delivery deeplinks</p>
+					</div>
 				</div>
 			</CardContent>
 		</Card>

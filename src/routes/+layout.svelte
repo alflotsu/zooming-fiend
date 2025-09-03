@@ -26,6 +26,26 @@
 	<title>Velourcity - Fast & Reliable Delivery Service</title>
 	<meta name="description" content="Lightning-fast delivery service for food, groceries, and packages. Download our app or integrate our API into your application." />
 	<link rel="icon" href={favicon} />
+	<!-- Early theme application to prevent FOUC -->
+	<script>
+		(function() {
+			try {
+				var t = localStorage.getItem('theme');
+				if (!t) {
+					// fall back to system preference
+					var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+					t = prefersDark ? 'dark' : 'light';
+				}
+				if (t === 'dark') {
+					document.documentElement.classList.add('dark');
+				} else {
+					document.documentElement.classList.remove('dark');
+				}
+			} catch (e) {
+				// ignore
+			}
+		})();
+	</script>
 </svelte:head>
 
 <div class="min-h-screen bg-background">

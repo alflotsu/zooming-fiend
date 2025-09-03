@@ -169,7 +169,7 @@
 	</div>
 	
 	<div class="mx-auto mt-12 max-w-4xl">
-		<Tabs defaultValue="create" class="w-full">
+		<Tabs  class="w-full">
 			<TabsList class="grid w-full grid-cols-3">
 				<TabsTrigger value="create">Create Order</TabsTrigger>
 				<TabsTrigger value="track">Track Order</TabsTrigger>
@@ -184,32 +184,9 @@
 						</CardDescription>
 					</CardHeader>
 					<CardContent>
-						<pre class="bg-muted p-4 rounded-lg overflow-x-auto text-sm"><code>curl -X POST https://api.velourcity.com/v1/orders \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "pickup": {
-      "address": "123 Restaurant St, City, State 12345",
-      "lat": 40.7128,
-      "lng": -74.0060
-    },
-    "dropoff": {
-      "address": "456 Customer Ave, City, State 12345", 
-      "lat": 40.7589,
-      "lng": -73.9851
-    },
-    "items": [
-      {
-        "name": "Pizza Margherita",
-        "quantity": 2,
-        "price": 24.99
-      }
-    ],
-    "customer": {
-      "name": "John Doe",
-      "phone": "+1234567890"
-    }
-  }'</code></pre>
+					<div class="bg-muted p-4 rounded-lg">
+						<p class="text-sm text-muted-foreground italic">TODO: Add curl command example for creating delivery orders</p>
+					</div>
 					</CardContent>
 				</Card>
 			</TabsContent>
@@ -222,23 +199,9 @@
 						</CardDescription>
 					</CardHeader>
 					<CardContent>
-						<pre class="bg-muted p-4 rounded-lg overflow-x-auto text-sm"><code>curl -X GET https://api.velourcity.com/v1/orders/ord_123456789 \\
-  -H "Authorization: Bearer YOUR_API_KEY"
-
-# Response:
-{
-  "id": "ord_123456789",
-  "status": "in_transit",
-  "driver": {
-    "name": "Jane Driver",
-    "location": {
-      "lat": 40.7505,
-      "lng": -73.9934
-    }
-  },
-  "eta": "2025-01-15T19:30:00Z",
-  "tracking_url": "https://track.velourcity.com/ord_123456789"
-}</code></pre>
+					<div class="bg-muted p-4 rounded-lg">
+						<p class="text-sm text-muted-foreground italic">TODO: Add curl command example for tracking delivery orders</p>
+					</div>
 					</CardContent>
 				</Card>
 			</TabsContent>
@@ -251,21 +214,9 @@
 						</CardDescription>
 					</CardHeader>
 					<CardContent>
-						<pre class="bg-muted p-4 rounded-lg overflow-x-auto text-sm"><code># URL format:
-https://app.velourcity.com/delivery?
-  pickup_address=123%20Restaurant%20St
-  &dropoff_address=456%20Customer%20Ave
-  &partner_id=YOUR_PARTNER_ID
-  &callback_url=https://yourapp.com/delivery/complete
-
-# JavaScript example:
-const deeplink = `https://app.velourcity.com/delivery?` +
-  `pickup_address=${encodeURIComponent(pickupAddress)}` +
-  `&dropoff_address=${encodeURIComponent(dropoffAddress)}` +
-  `&partner_id=${partnerId}` +
-  `&callback_url=${encodeURIComponent(callbackUrl)}`;
-  
-window.location.href = deeplink;</code></pre>
+					<div class="bg-muted p-4 rounded-lg">
+						<p class="text-sm text-muted-foreground italic">TODO: Add JavaScript example for generating deeplinks</p>
+					</div>
 					</CardContent>
 				</Card>
 			</TabsContent>

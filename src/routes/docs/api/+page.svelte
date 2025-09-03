@@ -89,7 +89,7 @@
 			<TabsContent value="orders" class="space-y-6">
 				<Card>
 					<CardHeader>
-						<div class="flex items-center space-between w-full">
+						<div class="flex items-center justify-between w-full">
 							<div>
 								<CardTitle class="text-lg">Create Order</CardTitle>
 								<CardDescription>Create a new delivery order</CardDescription>
@@ -103,52 +103,22 @@
 						</div>
 						<div>
 							<h4 class="font-semibold mb-2">Request Body</h4>
-							<pre class="bg-muted p-4 rounded-lg overflow-x-auto text-sm"><code>{
-  "pickup": {
-    "address": "123 Restaurant St, City, State 12345",
-    "lat": 40.7128,
-    "lng": -74.0060,
-    "contact_name": "Restaurant Manager",
-    "contact_phone": "+1234567890"
-  },
-  "dropoff": {
-    "address": "456 Customer Ave, City, State 12345",
-    "lat": 40.7589,
-    "lng": -73.9851,
-    "contact_name": "John Doe",
-    "contact_phone": "+1234567891"
-  },
-  "items": [
-    {
-      "name": "Pizza Margherita",
-      "description": "Large pizza with tomato and mozzarella",
-      "quantity": 2,
-      "price": 24.99
-    }
-  ],
-  "delivery_instructions": "Ring doorbell twice",
-  "scheduled_time": null,
-  "priority": "standard"
-}</code></pre>
+							<div class="bg-muted p-4 rounded-lg">
+								<p class="text-sm text-muted-foreground italic">TODO: Add JSON request body example for creating orders</p>
+							</div>
 						</div>
 						<div>
 							<h4 class="font-semibold mb-2">Response (201 Created)</h4>
-							<pre class="bg-muted p-4 rounded-lg overflow-x-auto text-sm"><code>{
-  "id": "ord_123456789",
-  "status": "confirmed",
-  "created_at": "2025-01-15T18:00:00Z",
-  "estimated_pickup": "2025-01-15T18:15:00Z",
-  "estimated_delivery": "2025-01-15T18:45:00Z",
-  "total_amount": 49.98,
-  "tracking_url": "https://track.velourcity.com/ord_123456789"
-}</code></pre>
+							<div class="bg-muted p-4 rounded-lg">
+								<p class="text-sm text-muted-foreground italic">TODO: Add JSON response example for creating orders</p>
+							</div>
 						</div>
 					</CardContent>
 				</Card>
 
 				<Card>
 					<CardHeader>
-						<div class="flex items-center space-between w-full">
+						<div class="flex items-center justify-between w-full">
 							<div>
 								<CardTitle class="text-lg">Get Order</CardTitle>
 								<CardDescription>Retrieve order details</CardDescription>
@@ -158,38 +128,20 @@
 					</CardHeader>
 					<CardContent class="space-y-4">
 						<div class="bg-muted p-3 rounded text-sm">
-							<code>GET /orders/{order_id}</code>
+							<code>GET /orders/order_id</code>
 						</div>
 						<div>
 							<h4 class="font-semibold mb-2">Response (200 OK)</h4>
-							<pre class="bg-muted p-4 rounded-lg overflow-x-auto text-sm"><code>{
-  "id": "ord_123456789",
-  "status": "in_transit",
-  "created_at": "2025-01-15T18:00:00Z",
-  "pickup": {
-    "address": "123 Restaurant St, City, State 12345",
-    "completed_at": "2025-01-15T18:12:00Z"
-  },
-  "dropoff": {
-    "address": "456 Customer Ave, City, State 12345",
-    "estimated_arrival": "2025-01-15T18:42:00Z"
-  },
-  "driver": {
-    "id": "drv_987654321",
-    "name": "Jane Driver",
-    "phone": "+1987654321",
-    "vehicle": "Honda Civic - ABC123"
-  },
-  "total_amount": 49.98,
-  "tracking_url": "https://track.velourcity.com/ord_123456789"
-}</code></pre>
+							<div class="bg-muted p-4 rounded-lg">
+								<p class="text-sm text-muted-foreground italic">TODO: Add JSON response example for getting order details</p>
+							</div>
 						</div>
 					</CardContent>
 				</Card>
 
 				<Card>
 					<CardHeader>
-						<div class="flex items-center space-between w-full">
+						<div class="flex items-center justify-between w-full">
 							<div>
 								<CardTitle class="text-lg">Cancel Order</CardTitle>
 								<CardDescription>Cancel an existing order</CardDescription>
@@ -199,7 +151,7 @@
 					</CardHeader>
 					<CardContent class="space-y-4">
 						<div class="bg-muted p-3 rounded text-sm">
-							<code>DELETE /orders/{order_id}</code>
+							<code>DELETE /orders/order_id</code>
 						</div>
 						<p class="text-sm text-muted-foreground">
 							Orders can only be cancelled before driver pickup. Cancellation fees may apply.
@@ -212,7 +164,7 @@
 			<TabsContent value="tracking" class="space-y-6">
 				<Card>
 					<CardHeader>
-						<div class="flex items-center space-between w-full">
+						<div class="flex items-center justify-between w-full">
 							<div>
 								<CardTitle class="text-lg">Get Live Location</CardTitle>
 								<CardDescription>Get real-time driver location</CardDescription>
@@ -222,68 +174,13 @@
 					</CardHeader>
 					<CardContent class="space-y-4">
 						<div class="bg-muted p-3 rounded text-sm">
-							<code>GET /orders/{order_id}/location</code>
+							<code>GET /orders/order_id/location</code>
 						</div>
 						<div>
 							<h4 class="font-semibold mb-2">Response (200 OK)</h4>
-							<pre class="bg-muted p-4 rounded-lg overflow-x-auto text-sm"><code>{
-  "order_id": "ord_123456789",
-  "driver_location": {
-    "lat": 40.7505,
-    "lng": -73.9934,
-    "heading": 125,
-    "speed": 25
-  },
-  "eta_pickup": null,
-  "eta_delivery": "2025-01-15T18:42:00Z",
-  "last_updated": "2025-01-15T18:30:00Z"
-}</code></pre>
-						</div>
-					</CardContent>
-				</Card>
-
-				<Card>
-					<CardHeader>
-						<div class="flex items-center space-between w-full">
-							<div>
-								<CardTitle class="text-lg">Get Tracking Events</CardTitle>
-								<CardDescription>Get order status history</CardDescription>
+							<div class="bg-muted p-4 rounded-lg">
+								<p class="text-sm text-muted-foreground italic">TODO: Add JSON response example for live location data</p>
 							</div>
-							<Badge variant="outline" class="ml-auto">GET</Badge>
-						</div>
-					</CardHeader>
-					<CardContent class="space-y-4">
-						<div class="bg-muted p-3 rounded text-sm">
-							<code>GET /orders/{order_id}/events</code>
-						</div>
-						<div>
-							<h4 class="font-semibold mb-2">Response (200 OK)</h4>
-							<pre class="bg-muted p-4 rounded-lg overflow-x-auto text-sm"><code>{
-  "order_id": "ord_123456789",
-  "events": [
-    {
-      "type": "order_created",
-      "timestamp": "2025-01-15T18:00:00Z",
-      "message": "Order created and confirmed"
-    },
-    {
-      "type": "driver_assigned",
-      "timestamp": "2025-01-15T18:05:00Z",
-      "message": "Driver Jane assigned to delivery",
-      "driver_id": "drv_987654321"
-    },
-    {
-      "type": "pickup_completed",
-      "timestamp": "2025-01-15T18:12:00Z",
-      "message": "Items picked up from restaurant"
-    },
-    {
-      "type": "in_transit",
-      "timestamp": "2025-01-15T18:15:00Z",
-      "message": "On the way to delivery location"
-    }
-  ]
-}</code></pre>
 						</div>
 					</CardContent>
 				</Card>
@@ -316,7 +213,7 @@
 			<TabsContent value="payments" class="space-y-6">
 				<Card>
 					<CardHeader>
-						<div class="flex items-center space-between w-full">
+						<div class="flex items-center justify-between w-full">
 							<div>
 								<CardTitle class="text-lg">Process Payment</CardTitle>
 								<CardDescription>Process payment for an order</CardDescription>
@@ -326,20 +223,13 @@
 					</CardHeader>
 					<CardContent class="space-y-4">
 						<div class="bg-muted p-3 rounded text-sm">
-							<code>POST /orders/{order_id}/payment</code>
+							<code>POST /orders/order_id/payment</code>
 						</div>
 						<div>
 							<h4 class="font-semibold mb-2">Request Body</h4>
-							<pre class="bg-muted p-4 rounded-lg overflow-x-auto text-sm"><code>{
-  "payment_method": {
-    "type": "card",
-    "token": "pm_1234567890",
-    "last4": "4242"
-  },
-  "amount": 49.98,
-  "currency": "USD",
-  "tip_amount": 5.00
-}</code></pre>
+							<div class="bg-muted p-4 rounded-lg">
+								<p class="text-sm text-muted-foreground italic">TODO: Add JSON request body example for payment processing</p>
+							</div>
 						</div>
 					</CardContent>
 				</Card>
@@ -411,16 +301,9 @@
 			<CardContent class="space-y-4">
 				<div>
 					<h4 class="font-semibold mb-2">Error Response Format</h4>
-					<pre class="bg-muted p-4 rounded-lg overflow-x-auto text-sm"><code>{
-  "error": {
-    "code": "invalid_request",
-    "message": "The pickup address is required",
-    "details": {
-      "field": "pickup.address",
-      "reason": "missing_required_field"
-    }
-  }
-}</code></pre>
+					<div class="bg-muted p-4 rounded-lg">
+						<p class="text-sm text-muted-foreground italic">TODO: Add JSON error response example</p>
+					</div>
 				</div>
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 					<div class="space-y-2">

@@ -12,6 +12,8 @@ import GroupHeading from "./select-group-heading.svelte";
 
 const Root = SelectPrimitive.Root;
 
+const Value = SelectPrimitive.Value;
+
 export {
 	Root,
 	Group,
@@ -23,6 +25,7 @@ export {
 	ScrollDownButton,
 	ScrollUpButton,
 	GroupHeading,
+	Value,
 	//
 	Root as Select,
 	Group as SelectGroup,
@@ -34,4 +37,5 @@ export {
 	ScrollDownButton as SelectScrollDownButton,
 	ScrollUpButton as SelectScrollUpButton,
 	GroupHeading as SelectGroupHeading,
+	Value as SelectValue,
 };
