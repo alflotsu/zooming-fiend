@@ -185,4 +185,50 @@
     transform: translateX(-50%);
     opacity: 0.5;
   }
+  
+  /* Animated grid background */
+  .grid-animate {
+    animation: grid-grow 6s ease-out forwards;
+    background-size: 200px 200px;
+  }
+  
+  @keyframes grid-grow {
+    0% {
+      background-size: 200px 200px;
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.1;
+    }
+    50% {
+      background-size: 100px 100px;
+      opacity: 0.3;
+    }
+    100% {
+      background-size: 64px 64px;
+      opacity: 0.4;
+    }
+  }
+  
+  .dark .grid-animate {
+    animation: grid-grow-dark 6s ease-out forwards;
+  }
+  
+  @keyframes grid-grow-dark {
+    0% {
+      background-size: 200px 200px;
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.05;
+    }
+    50% {
+      background-size: 100px 100px;
+      opacity: 0.15;
+    }
+    100% {
+      background-size: 64px 64px;
+      opacity: 0.2;
+    }
+  }
 }

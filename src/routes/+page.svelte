@@ -12,22 +12,55 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Velourcity - Fast & Reliable Delivery Service</title>
+	<meta name="description" content="Lightning-fast delivery service for food, groceries, and packages. Download our app or integrate our API into your application. 15-minute average delivery time." />
+	
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://velourcity.com/" />
+	<meta property="og:title" content="Velourcity - Fast & Reliable Delivery Service" />
+	<meta property="og:description" content="Lightning-fast delivery service for food, groceries, and packages. Download our app or integrate our API into your application. 15-minute average delivery time." />
+	<meta property="og:image" content="https://velourcity.com/og-image.jpg" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:site_name" content="Velourcity" />
+	
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="https://velourcity.com/" />
+	<meta property="twitter:title" content="Velourcity - Fast & Reliable Delivery Service" />
+	<meta property="twitter:description" content="Lightning-fast delivery service for food, groceries, and packages. Download our app or integrate our API into your application. 15-minute average delivery time." />
+	<meta property="twitter:image" content="https://velourcity.com/og-image.jpg" />
+	<meta property="twitter:site" content="@velourcity" />
+	<meta property="twitter:creator" content="@velourcity" />
+</svelte:head>
+
+<!-- Full Page Grid Background -->
+<div class="fixed inset-0 -z-50">
+	<!-- Light mode grid (gray) with animation -->
+	<div class="absolute inset-0 bg-[url('/grid.svg')] bg-repeat opacity-40 dark:hidden grid-animate"></div>
+	<!-- Dark mode grid (blue) with animation -->
+	<div class="absolute inset-0 bg-[url('/grid-dark.svg')] bg-repeat opacity-20 hidden dark:block grid-animate"></div>
+	<div class="absolute inset-0 bg-gradient-to-br from-background/80 via-background/40 to-background/80"></div>
+</div>
+
 <!-- Hero Section -->
 <section class="relative container space-y-6 py-8 md:py-12 lg:py-32 overflow-hidden">
 	<!-- Hero Background Gradient -->
-	<div class="hero-bg absolute inset-0 -z-10 opacity-30">
-		<div class="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-blue-500/10"></div>
-		<div class="absolute inset-0 bg-gradient-conic from-primary/5 via-transparent to-slate-500/5 animate-spin-slow"></div>
+	<div class="hero-bg absolute inset-0 -z-10 opacity-20">
+		<div class="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-blue-500/8"></div>
+		<div class="absolute inset-0 bg-gradient-conic from-primary/3 via-transparent to-slate-500/3 animate-spin-slow"></div>
 	</div>
 	<div class="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
 		<Badge variant="outline" class="hero-badge px-4 py-1 text-sm">
 			🚀 Fast & Reliable Delivery
 		</Badge>
 		<h1 class="hero-title font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-			Your delivery, <span class="text-primary">delivered</span>
+			Your packages, <span class="text-primary">delivered</span>
 		</h1>
 		<p class="hero-description max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-			Fast, reliable delivery service at your fingertips. Order food, groceries, packages, and more with just a few taps.
+			Fast, reliable delivery service at your fingertips. Get your food, groceries, packages, and more with just a few taps.
 		</p>
 		<div class="hero-buttons flex flex-col gap-4 sm:flex-row">
 			<Button size="lg" href="https://apps.apple.com/app/velourcity" class="h-11 px-8">
@@ -240,7 +273,7 @@
 			Integrate delivery into your app
 		</h2>
 		<p class="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7 mx-auto">
-			Add delivery features to your application with our REST API, deeplinks, and webhooks.
+			Add delivery features to your application with our comprehensive, easy to use API.
 		</p>
 		<div class="flex flex-col gap-4 sm:flex-row justify-center">
 			<Button size="lg" href="/developers" class="h-11 px-8">

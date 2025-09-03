@@ -55,7 +55,7 @@
 	</script>
 </svelte:head>
 
-<div class="min-h-screen bg-background">
+<div class="min-h-screen">
 	<!-- Header -->
 	<header class="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
 		<div class="container flex h-14 max-w-screen-2xl items-center">
@@ -73,39 +73,45 @@
 							<span>Developers</span>
 							<ChevronDown class="h-3 w-3" />
 						</DropdownMenuTrigger>
-						<DropdownMenuContent align="start" class="w-56">
-							<DropdownMenuLabel class="flex items-center space-x-2">
-								<Code class="h-4 w-4" />
-								<span>Developer Platform</span>
-							</DropdownMenuLabel>
-							<DropdownMenuSeparator />
-							<DropdownMenuItem>
-								<a href="/developers" class="flex w-full">
-									Overview
-								</a>
-							</DropdownMenuItem>
-							<DropdownMenuItem>
-								<a href="/developers/signup" class="flex w-full">
-									Get Started
-								</a>
-							</DropdownMenuItem>
-							<DropdownMenuItem>
-								<a href="/docs" class="flex w-full">
-									Documentation
-								</a>
-							</DropdownMenuItem>
-							<DropdownMenuSeparator />
-							<DropdownMenuItem>
-								<a href="/docs/api" class="flex w-full">
-									API Reference
-								</a>
-							</DropdownMenuItem>
-							<DropdownMenuItem>
-								<a href="/docs/deeplinks" class="flex w-full">
-									Deeplinks
-								</a>
-							</DropdownMenuItem>
-						</DropdownMenuContent>
+					<DropdownMenuContent align="start" class="w-56">
+						<DropdownMenuLabel class="flex items-center space-x-2">
+							<Code class="h-4 w-4" />
+							<span>Developer Platform</span>
+						</DropdownMenuLabel>
+						<DropdownMenuSeparator />
+						<DropdownMenuItem>
+							<a href="/developers" class="flex w-full">
+								Overview
+							</a>
+						</DropdownMenuItem>
+						<DropdownMenuItem>
+							<a href="/developers/signup" class="flex w-full">
+								Get Started
+							</a>
+						</DropdownMenuItem>
+						<DropdownMenuItem>
+							<a href="/docs" class="flex w-full">
+								Documentation
+							</a>
+						</DropdownMenuItem>
+						<DropdownMenuSeparator />
+						<DropdownMenuItem>
+							<a href="/docs/api" class="flex w-full">
+								API Reference
+							</a>
+						</DropdownMenuItem>
+						<DropdownMenuItem>
+							<a href="/docs/deeplinks" class="flex w-full">
+								Deeplinks
+							</a>
+						</DropdownMenuItem>
+						<DropdownMenuSeparator />
+						<DropdownMenuItem>
+							<a href="/drivers" class="flex w-full">
+								Drive with Us
+							</a>
+						</DropdownMenuItem>
+					</DropdownMenuContent>
 					</DropdownMenu>
 					<a href="/docs" class="text-sm font-medium transition-colors hover:text-primary">
 						Docs
