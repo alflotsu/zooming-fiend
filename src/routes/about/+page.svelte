@@ -18,6 +18,13 @@
 		MapPin,
 		Star
 	} from 'lucide-svelte';
+	import { onMount } from 'svelte';
+	import { initializeAnimations } from '$lib/utils/animations.js';
+	
+	onMount(() => {
+		// Initialize all animations with accessibility support
+		initializeAnimations();
+	});
 </script>
 
 <svelte:head>
@@ -44,6 +51,54 @@
 	<meta property="twitter:creator" content="@velourcity" />
 </svelte:head>
 
+<style>
+	/* Animated triangles background with stroke animations */
+	.triangle-stroke-animate {
+		background-size: 512px 512px;
+		color: hsl(var(--primary) / 0.10);
+		animation: triangle-fade-in 3s ease-out forwards;
+	}
+	
+	@keyframes triangle-fade-in {
+		0% {
+			opacity: 0;
+			background-size: 768px 768px;
+		}
+		100% {
+			opacity: 1;
+			background-size: 512px 512px;
+		}
+	}
+	
+	.dark .triangle-stroke-animate {
+		color: hsl(var(--primary) / 0.06);
+	}
+	
+	/* Pulse animation for additional effect */
+	.triangle-pulse {
+		animation: pulse-opacity 7s ease-in-out infinite;
+	}
+	
+	@keyframes pulse-opacity {
+		0%, 100% {
+			opacity: 0.6;
+		}
+		50% {
+			opacity: 1;
+		}
+	}
+</style>
+
+<!-- Full Page Triangle Background -->
+<div class="fixed inset-0 -z-50">
+	<!-- Animated triangle strokes for both light and dark mode -->
+	<div class="absolute inset-0 bg-[url('/grid_triangles_animated.svg')] bg-repeat triangle-stroke-animate triangle-pulse"></div>
+	<!-- Subtle gradient overlay -->
+	<div class="absolute inset-0 bg-gradient-to-br from-background/88 via-background/55 to-background/88"></div>
+</div>
+
+<div class="min-h-screen">
+
 <!-- Hero Section -->
 <section class="relative container space-y-6 py-8 md:py-12 lg:py-32 overflow-hidden">
 	<div class="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
@@ -58,21 +113,21 @@
 		</p>
 		
 		<!-- Mission Stats -->
-		<div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 w-full max-w-4xl">
+		<div class="stats-section grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 w-full max-w-4xl">
 			<div class="text-center">
-				<div class="text-3xl font-bold text-primary">2024</div>
+				<div class="stat-number text-3xl font-bold text-primary">2024</div>
 				<div class="text-sm text-muted-foreground">Founded</div>
 			</div>
 			<div class="text-center">
-				<div class="text-3xl font-bold text-primary">100k+</div>
+				<div class="stat-number text-3xl font-bold text-primary">100k+</div>
 				<div class="text-sm text-muted-foreground">Deliveries</div>
 			</div>
 			<div class="text-center">
-				<div class="text-3xl font-bold text-primary">15min</div>
+				<div class="stat-number text-3xl font-bold text-primary">15min</div>
 				<div class="text-sm text-muted-foreground">Average Time</div>
 			</div>
 			<div class="text-center">
-				<div class="text-3xl font-bold text-primary">99.9%</div>
+				<div class="stat-number text-3xl font-bold text-primary">99.9%</div>
 				<div class="text-sm text-muted-foreground">Uptime</div>
 			</div>
 		</div>
@@ -159,8 +214,8 @@
 		</p>
 	</div>
 	
-	<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
-		<Card>
+	<div class="features-grid grid gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+		<Card class="feature-card">
 			<CardHeader>
 				<div class="flex items-center space-x-2">
 					<Rocket class="h-6 w-6 text-orange-500" />
@@ -174,7 +229,7 @@
 			</CardContent>
 		</Card>
 		
-		<Card>
+		<Card class="feature-card">
 			<CardHeader>
 				<div class="flex items-center space-x-2">
 					<Shield class="h-6 w-6 text-green-500" />
@@ -188,7 +243,7 @@
 			</CardContent>
 		</Card>
 		
-		<Card>
+		<Card class="feature-card">
 			<CardHeader>
 				<div class="flex items-center space-x-2">
 					<Heart class="h-6 w-6 text-red-500" />
@@ -202,7 +257,7 @@
 			</CardContent>
 		</Card>
 		
-		<Card>
+		<Card class="feature-card">
 			<CardHeader>
 				<div class="flex items-center space-x-2">
 					<Target class="h-6 w-6 text-blue-500" />
@@ -442,3 +497,5 @@
 		</div>
 	</div>
 </section>
+
+</div>

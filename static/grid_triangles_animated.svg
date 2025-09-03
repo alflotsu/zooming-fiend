@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- Transparent background for overlay -->
+  <rect width="1024" height="1024" fill="none"/>
+  
+  <!-- Animated triangles grid with single traveling gap -->
+  <defs>
+    <!-- Main triangle pattern -->
+    <pattern id="triangleGridAnim" width="64" height="64" patternUnits="userSpaceOnUse">
+      <polygon points="32,8 8,52 56,52" 
+               fill="none" 
+               stroke="currentColor" 
+               stroke-width="1"
+               stroke-dasharray="120 12"
+               stroke-dashoffset="0">
+        <animate attributeName="stroke-dashoffset" 
+                 values="0;132;0" 
+                 dur="4s" 
+                 repeatCount="indefinite"/>
+      </polygon>
+    </pattern>
+    
+    <!-- Mixed orientation pattern for variety -->
+    <pattern id="triangleGridMixed" width="128" height="128" patternUnits="userSpaceOnUse">
+      <!-- Upward triangles -->
+      <polygon points="32,8 8,52 56,52" 
+               fill="none" 
+               stroke="currentColor" 
+               stroke-width="1"
+               stroke-dasharray="120 12"
+               stroke-dashoffset="33">
+        <animate attributeName="stroke-dashoffset" 
+                 values="33;165;33" 
+                 dur="4.5s" 
+                 repeatCount="indefinite"/>
+      </polygon>
+      <polygon points="96,8 72,52 120,52" 
+               fill="none" 
+               stroke="currentColor" 
+               stroke-width="1"
+               stroke-dasharray="120 12"
+               stroke-dashoffset="66">
+        <animate attributeName="stroke-dashoffset" 
+                 values="66;198;66" 
+                 dur="5s" 
+                 repeatCount="indefinite"/>
+      </polygon>
+      
+      <!-- Downward triangles -->
+      <polygon points="64,72 40,116 88,116" 
+               fill="none" 
+               stroke="currentColor" 
+               stroke-width="1"
+               stroke-dasharray="120 12"
+               stroke-dashoffset="99">
+        <animate attributeName="stroke-dashoffset" 
+                 values="99;231;99" 
+                 dur="4.2s" 
+                 repeatCount="indefinite"/>
+      </polygon>
+    </pattern>
+  </defs>
+  
+  <!-- Layer patterns for complex triangular effects -->
+  <rect width="1024" height="1024" fill="url(#triangleGridAnim)"/>
+  <rect width="1024" height="1024" fill="url(#triangleGridMixed)" opacity="0.5"/>
+</svg>

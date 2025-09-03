@@ -3,6 +3,13 @@
 	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '$lib/components/ui/card';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Smartphone, DollarSign, Clock, Shield, Star, Users, Truck, CheckCircle, ArrowRight, MapPin } from 'lucide-svelte';
+	import { onMount } from 'svelte';
+	import { initializeAnimations } from '$lib/utils/animations.js';
+	
+	onMount(() => {
+		// Initialize all animations with accessibility support
+		initializeAnimations();
+	});
 </script>
 
 <svelte:head>
@@ -29,6 +36,54 @@
 	<meta property="twitter:creator" content="@velourcity" />
 </svelte:head>
 
+<style>
+	/* Animated circles background with stroke animations */
+	.circle-stroke-animate {
+		background-size: 512px 512px;
+		color: hsl(var(--primary) / 0.12);
+		animation: circle-fade-in 2.5s ease-out forwards;
+	}
+	
+	@keyframes circle-fade-in {
+		0% {
+			opacity: 0;
+			background-size: 800px 800px;
+		}
+		100% {
+			opacity: 1;
+			background-size: 512px 512px;
+		}
+	}
+	
+	.dark .circle-stroke-animate {
+		color: hsl(var(--primary) / 0.18);
+	}
+	
+	/* Pulse animation for additional effect */
+	.circle-pulse {
+		animation: pulse-opacity 5s ease-in-out infinite;
+	}
+	
+	@keyframes pulse-opacity {
+		0%, 100% {
+			opacity: 0.7;
+		}
+		50% {
+			opacity: 1;
+		}
+	}
+</style>
+
+<!-- Full Page Circle Background -->
+<div class="fixed inset-0 -z-50">
+	<!-- Animated circle strokes for both light and dark mode -->
+	<div class="absolute inset-0 bg-[url('/grid_circles_animated.svg')] bg-repeat circle-stroke-animate circle-pulse"></div>
+	<!-- Subtle gradient overlay -->
+	<div class="absolute inset-0 bg-gradient-to-br from-background/85 via-background/50 to-background/85"></div>
+</div>
+
+<div class="min-h-screen">
+
 <!-- Hero Section -->
 <section class="relative container space-y-6 py-8 md:py-12 lg:py-32 overflow-hidden">
 	<div class="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
@@ -52,21 +107,21 @@
 		</div>
 		
 		<!-- Quick Stats -->
-		<div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+		<div class="stats-section grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
 			<div class="text-center">
-				<div class="text-3xl font-bold text-primary">$25+</div>
+				<div class="stat-number text-3xl font-bold text-primary">$25+</div>
 				<div class="text-sm text-muted-foreground">Per Hour Potential</div>
 			</div>
 			<div class="text-center">
-				<div class="text-3xl font-bold text-primary">24/7</div>
+				<div class="stat-number text-3xl font-bold text-primary">24/7</div>
 				<div class="text-sm text-muted-foreground">Instant Payouts</div>
 			</div>
 			<div class="text-center">
-				<div class="text-3xl font-bold text-primary">10K+</div>
+				<div class="stat-number text-3xl font-bold text-primary">10K+</div>
 				<div class="text-sm text-muted-foreground">Active Drivers</div>
 			</div>
 			<div class="text-center">
-				<div class="text-3xl font-bold text-primary">4.9★</div>
+				<div class="stat-number text-3xl font-bold text-primary">4.9★</div>
 				<div class="text-sm text-muted-foreground">Driver Rating</div>
 			</div>
 		</div>
@@ -83,8 +138,8 @@
 			We've built the best platform for drivers. Here's what makes us different.
 		</p>
 	</div>
-	<div class="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
-		<Card class="relative overflow-hidden">
+	<div class="features-grid mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
+		<Card class="feature-card relative overflow-hidden">
 			<CardHeader>
 				<div class="flex items-center space-x-2">
 					<DollarSign class="h-6 w-6 text-green-500" />
@@ -97,7 +152,7 @@
 				</CardDescription>
 			</CardContent>
 		</Card>
-		<Card class="relative overflow-hidden">
+		<Card class="feature-card relative overflow-hidden">
 			<CardHeader>
 				<div class="flex items-center space-x-2">
 					<Clock class="h-6 w-6 text-blue-500" />
@@ -110,7 +165,7 @@
 				</CardDescription>
 			</CardContent>
 		</Card>
-		<Card class="relative overflow-hidden">
+		<Card class="feature-card relative overflow-hidden">
 			<CardHeader>
 				<div class="flex items-center space-x-2">
 					<Shield class="h-6 w-6 text-purple-500" />
@@ -123,7 +178,7 @@
 				</CardDescription>
 			</CardContent>
 		</Card>
-		<Card class="relative overflow-hidden">
+		<Card class="feature-card relative overflow-hidden">
 			<CardHeader>
 				<div class="flex items-center space-x-2">
 					<Truck class="h-6 w-6 text-orange-500" />
@@ -136,7 +191,7 @@
 				</CardDescription>
 			</CardContent>
 		</Card>
-		<Card class="relative overflow-hidden">
+		<Card class="feature-card relative overflow-hidden">
 			<CardHeader>
 				<div class="flex items-center space-x-2">
 					<Star class="h-6 w-6 text-yellow-500" />
@@ -149,7 +204,7 @@
 				</CardDescription>
 			</CardContent>
 		</Card>
-		<Card class="relative overflow-hidden">
+		<Card class="feature-card relative overflow-hidden">
 			<CardHeader>
 				<div class="flex items-center space-x-2">
 					<Users class="h-6 w-6 text-indigo-500" />
@@ -359,3 +414,5 @@
 		</div>
 	</div>
 </section>
+
+</div>

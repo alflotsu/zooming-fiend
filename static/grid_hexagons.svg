@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- Black background -->
+  <rect width="1024" height="1024" fill="black"/>
+  
+  <!-- Hexagon grid -->
+  <defs>
+    <pattern id="hexGrid" width="64" height="55.43" patternUnits="userSpaceOnUse">
+      <!-- Regular hexagon centered in pattern cell -->
+      <polygon points="32,4 46,14.5 46,35.93 32,46.43 18,35.93 18,14.5" 
+               fill="none" 
+               stroke="white" 
+               stroke-width="1"/>
+    </pattern>
+    
+    <!-- Offset pattern for honeycomb effect -->
+    <pattern id="hexGridOffset" width="64" height="55.43" patternUnits="userSpaceOnUse">
+      <polygon points="0,27.71 14,38.21 14,59.64 0,70.14 -14,59.64 -14,38.21" 
+               fill="none" 
+               stroke="white" 
+               stroke-width="1"/>
+      <polygon points="64,27.71 78,38.21 78,59.64 64,70.14 50,59.64 50,38.21" 
+               fill="none" 
+               stroke="white" 
+               stroke-width="1"/>
+    </pattern>
+  </defs>
+  
+  <!-- Apply hexagon patterns -->
+  <rect width="1024" height="512" y="0" fill="url(#hexGrid)"/>
+  <rect width="1024" height="512" y="27.72" fill="url(#hexGridOffset)"/>
+</svg>

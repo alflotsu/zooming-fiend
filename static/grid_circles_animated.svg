@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- Transparent background for overlay -->
+  <rect width="1024" height="1024" fill="none"/>
+  
+  <!-- Animated circles grid with single traveling gap -->
+  <defs>
+    <!-- Main circle pattern -->
+    <pattern id="circleGridAnim" width="64" height="64" patternUnits="userSpaceOnUse">
+      <circle cx="32" cy="32" r="28" 
+              fill="none" 
+              stroke="currentColor" 
+              stroke-width="1"
+              stroke-dasharray="160 16"
+              stroke-dashoffset="0">
+        <animate attributeName="stroke-dashoffset" 
+                 values="0;176;0" 
+                 dur="5s" 
+                 repeatCount="indefinite"/>
+      </circle>
+    </pattern>
+    
+    <!-- Offset circle pattern for variety -->
+    <pattern id="circleGridOffset" width="128" height="128" patternUnits="userSpaceOnUse">
+      <circle cx="32" cy="32" r="28" 
+              fill="none" 
+              stroke="currentColor" 
+              stroke-width="1"
+              stroke-dasharray="160 16"
+              stroke-dashoffset="44">
+        <animate attributeName="stroke-dashoffset" 
+                 values="44;220;44" 
+                 dur="5.5s" 
+                 repeatCount="indefinite"/>
+      </circle>
+      <circle cx="96" cy="32" r="28" 
+              fill="none" 
+              stroke="currentColor" 
+              stroke-width="1"
+              stroke-dasharray="160 16"
+              stroke-dashoffset="88">
+        <animate attributeName="stroke-dashoffset" 
+                 values="88;264;88" 
+                 dur="4.5s" 
+                 repeatCount="indefinite"/>
+      </circle>
+      <circle cx="32" cy="96" r="28" 
+              fill="none" 
+              stroke="currentColor" 
+              stroke-width="1"
+              stroke-dasharray="160 16"
+              stroke-dashoffset="132">
+        <animate attributeName="stroke-dashoffset" 
+                 values="132;308;132" 
+                 dur="6s" 
+                 repeatCount="indefinite"/>
+      </circle>
+      <circle cx="96" cy="96" r="28" 
+              fill="none" 
+              stroke="currentColor" 
+              stroke-width="1"
+              stroke-dasharray="160 16"
+              stroke-dashoffset="22">
+        <animate attributeName="stroke-dashoffset" 
+                 values="22;198;22" 
+                 dur="5.8s" 
+                 repeatCount="indefinite"/>
+      </circle>
+    </pattern>
+  </defs>
+  
+  <!-- Layer the patterns for complex animation -->
+  <rect width="1024" height="1024" fill="url(#circleGridAnim)"/>
+  <rect width="1024" height="1024" fill="url(#circleGridOffset)" opacity="0.6"/>
+</svg>

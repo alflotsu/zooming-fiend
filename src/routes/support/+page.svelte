@@ -21,6 +21,13 @@
 		CheckCircle,
 		ExternalLink 
 	} from 'lucide-svelte';
+	import { onMount } from 'svelte';
+	import { initializeAnimations } from '$lib/utils/animations.js';
+	
+	onMount(() => {
+		// Initialize all animations with accessibility support
+		initializeAnimations();
+	});
 	
 	// FAQ data
 	const faqs = {
@@ -124,6 +131,54 @@
 	<meta property="twitter:creator" content="@velourcity" />
 </svelte:head>
 
+<style>
+	/* Animated hexagon background with stroke animations */
+	.hexagon-stroke-animate {
+		background-size: 1600px 1600px;
+		color: hsl(var(--primary) / 0.15);
+		animation: hexagon-fade-in 2s ease-out forwards;
+	}
+	
+	@keyframes hexagon-fade-in {
+		0% {
+			opacity: 0;
+			background-size: 2000px 2000px;
+		}
+		100% {
+			opacity: 1;
+			background-size: 1600px 1600px;
+		}
+	}
+	
+	.dark .hexagon-stroke-animate {
+		color: hsl(var(--primary) / 0.15);
+	}
+	
+	/* Pulse animation for additional effect */
+	.hexagon-pulse {
+		animation: pulse-opacity 6s ease-in-out infinite;
+	}
+	
+	@keyframes pulse-opacity {
+		0%, 100% {
+			opacity: 0.6;
+		}
+		50% {
+			opacity: 1;
+		}
+	}
+</style>
+
+<!-- Full Page Hexagon Background -->
+<div class="fixed inset-0 -z-50">
+	<!-- Animated hexagon strokes for both light and dark mode -->
+	<div class="absolute inset-0 bg-[url('/grid_hexagons_animated.svg')] bg-repeat hexagon-stroke-animate hexagon-pulse"></div>
+	<!-- Subtle gradient overlay -->
+	<div class="absolute inset-0 bg-gradient-to-br from-background/90 via-background/60 to-background/90"></div>
+</div>
+
+<div class="min-h-screen">
+
 <!-- Hero Section -->
 <section class="relative container space-y-6 py-8 md:py-12 lg:py-24 overflow-hidden">
 	<div class="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
@@ -145,13 +200,33 @@
 				class="pl-10 h-12"
 			/>
 		</div>
+		
+		<!-- Support Stats -->
+		<div class="stats-section grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 max-w-4xl mx-auto">
+			<div class="text-center">
+				<div class="stat-number text-3xl font-bold text-primary">24/7</div>
+				<div class="text-sm text-muted-foreground">Support Available</div>
+			</div>
+			<div class="text-center">
+				<div class="stat-number text-3xl font-bold text-primary">2min</div>
+				<div class="text-sm text-muted-foreground">Avg Response</div>
+			</div>
+			<div class="text-center">
+				<div class="stat-number text-3xl font-bold text-primary">99%</div>
+				<div class="text-sm text-muted-foreground">Issue Resolution</div>
+			</div>
+			<div class="text-center">
+				<div class="stat-number text-3xl font-bold text-primary">4.9★</div>
+				<div class="text-sm text-muted-foreground">Support Rating</div>
+			</div>
+		</div>
 	</div>
 </section>
 
 <!-- Quick Actions -->
 <section class="container py-8 md:py-12">
-	<div class="grid gap-4 md:grid-cols-3 max-w-4xl mx-auto">
-		<Card class="group hover:shadow-lg transition-shadow cursor-pointer">
+	<div class="features-grid grid gap-4 md:grid-cols-3 max-w-4xl mx-auto">
+		<Card class="feature-card group hover:shadow-lg transition-shadow cursor-pointer">
 			<CardHeader>
 				<div class="flex items-center space-x-2">
 					<User class="h-6 w-6 text-blue-600" />
@@ -168,7 +243,7 @@
 			</CardContent>
 		</Card>
 		
-		<Card class="group hover:shadow-lg transition-shadow cursor-pointer">
+		<Card class="feature-card group hover:shadow-lg transition-shadow cursor-pointer">
 			<CardHeader>
 				<div class="flex items-center space-x-2">
 					<Truck class="h-6 w-6 text-green-600" />
@@ -185,7 +260,7 @@
 			</CardContent>
 		</Card>
 		
-		<Card class="group hover:shadow-lg transition-shadow cursor-pointer">
+		<Card class="feature-card group hover:shadow-lg transition-shadow cursor-pointer">
 			<CardHeader>
 				<div class="flex items-center space-x-2">
 					<Code class="h-6 w-6 text-purple-600" />
@@ -494,3 +569,5 @@
 		</CardContent>
 	</Card>
 </section>
+
+</div>
