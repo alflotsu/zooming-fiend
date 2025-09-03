@@ -4,12 +4,21 @@
 	import { Badge } from '$lib/components/ui/badge';
 	import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from '$lib/components/ui/breadcrumb';
 	import { Code, Smartphone, Webhook, Shield, BookOpen, ArrowRight } from 'lucide-svelte';
+	import { onMount } from 'svelte';
+	import { initializeAnimations } from '$lib/utils/animations';
+
+	onMount(() => {
+		initializeAnimations();
+	});
 </script>
 
 <svelte:head>
 	<title>Documentation - Velourcity API Platform</title>
 	<meta name="description" content="Complete documentation for the Velourcity API, deeplinks, webhooks, and authentication." />
 </svelte:head>
+
+<!-- Full-page animated grid background -->
+<div class="fixed inset-0 bg-background grid-background grid-background-animated -z-10"></div>
 
 <div class="container max-w-6xl py-8 md:py-12">
 	<!-- Breadcrumbs -->
@@ -27,13 +36,13 @@
 
 	<!-- Header -->
 	<div class="text-center space-y-4 mb-12">
-		<Badge variant="outline" class="px-4 py-1 text-sm">
+		<Badge variant="outline" class="px-4 py-1 text-sm hero-badge">
 			Developer Documentation
 		</Badge>
-		<h1 class="font-heading text-3xl sm:text-4xl md:text-5xl">
+		<h1 class="font-heading text-3xl sm:text-4xl md:text-5xl hero-title">
 			Velourcity API Documentation
 		</h1>
-		<p class="max-w-3xl mx-auto text-muted-foreground text-lg">
+		<p class="max-w-3xl mx-auto text-muted-foreground text-lg hero-description">
 			Everything you need to integrate delivery features into your application. From REST APIs to mobile deeplinks and real-time webhooks.
 		</p>
 	</div>
@@ -48,28 +57,28 @@
 			<p class="text-muted-foreground mb-6">
 				Get started with the Velourcity API in just a few steps.
 			</p>
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-				<div class="flex items-center space-x-3">
-					<div class="flex-shrink-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-						<span class="text-sm font-medium text-primary-foreground">1</span>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 steps-grid">
+			<div class="flex items-center space-x-3 step-item">
+					<div class="flex-shrink-0 w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center">
+						<span class="text-sm font-medium text-white">1</span>
 					</div>
 					<div>
 						<p class="font-medium">Sign up for API access</p>
 						<p class="text-sm text-muted-foreground">Get your API credentials</p>
 					</div>
 				</div>
-				<div class="flex items-center space-x-3">
-					<div class="flex-shrink-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-						<span class="text-sm font-medium text-primary-foreground">2</span>
+			<div class="flex items-center space-x-3 step-item">
+					<div class="flex-shrink-0 w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center">
+						<span class="text-sm font-medium text-white">2</span>
 					</div>
 					<div>
 						<p class="font-medium">Choose integration type</p>
 						<p class="text-sm text-muted-foreground">API, deeplinks, or webhooks</p>
 					</div>
 				</div>
-				<div class="flex items-center space-x-3">
-					<div class="flex-shrink-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-						<span class="text-sm font-medium text-primary-foreground">3</span>
+			<div class="flex items-center space-x-3 step-item">
+					<div class="flex-shrink-0 w-8 h-8 bg-violet-600 rounded-full flex items-center justify-center">
+						<span class="text-sm font-medium text-white">3</span>
 					</div>
 					<div>
 						<p class="font-medium">Start building</p>
@@ -77,7 +86,7 @@
 					</div>
 				</div>
 			</div>
-			<Button href="/developers/signup">
+			<Button href="/developers/signup" class="bg-purple-600 hover:bg-purple-700 text-white hero-buttons">
 				Get Started
 				<ArrowRight class="ml-2 h-4 w-4" />
 			</Button>
@@ -85,11 +94,11 @@
 	</section>
 
 	<!-- Documentation Sections -->
-	<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-		<Card class="group hover:shadow-lg transition-shadow">
+	<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 features-grid">
+		<Card class="group hover:shadow-lg transition-shadow feature-card">
 			<CardHeader>
 				<div class="flex items-center space-x-2">
-					<Code class="h-6 w-6 text-blue-600" />
+					<Code class="h-6 w-6 text-purple-600" />
 					<CardTitle>REST API</CardTitle>
 				</div>
 				<CardDescription>
@@ -111,10 +120,10 @@
 			</CardContent>
 		</Card>
 
-		<Card class="group hover:shadow-lg transition-shadow">
+		<Card class="group hover:shadow-lg transition-shadow feature-card">
 			<CardHeader>
 				<div class="flex items-center space-x-2">
-					<Smartphone class="h-6 w-6 text-green-600" />
+					<Smartphone class="h-6 w-6 text-indigo-600" />
 					<CardTitle>Deeplinks</CardTitle>
 				</div>
 				<CardDescription>
@@ -136,7 +145,7 @@
 			</CardContent>
 		</Card>
 
-		<Card class="group hover:shadow-lg transition-shadow">
+		<Card class="group hover:shadow-lg transition-shadow feature-card">
 			<CardHeader>
 				<div class="flex items-center space-x-2">
 					<Webhook class="h-6 w-6 text-purple-600" />
@@ -161,10 +170,10 @@
 			</CardContent>
 		</Card>
 
-		<Card class="group hover:shadow-lg transition-shadow">
+		<Card class="group hover:shadow-lg transition-shadow feature-card">
 			<CardHeader>
 				<div class="flex items-center space-x-2">
-					<Shield class="h-6 w-6 text-red-600" />
+					<Shield class="h-6 w-6 text-violet-600" />
 					<CardTitle>Authentication</CardTitle>
 				</div>
 				<CardDescription>

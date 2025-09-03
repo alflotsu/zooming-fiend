@@ -4,12 +4,21 @@
 	import { Badge } from '$lib/components/ui/badge';
 	import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from '$lib/components/ui/breadcrumb';
 	import { Smartphone, ArrowLeft, Copy } from 'lucide-svelte';
+	import { onMount } from 'svelte';
+	import { initializeAnimations } from '$lib/utils/animations';
+
+	onMount(() => {
+		initializeAnimations();
+	});
 </script>
 
 <svelte:head>
 	<title>Deeplinks Documentation - Velourcity API Platform</title>
 	<meta name="description" content="Mobile deeplink integration guide for the Velourcity delivery platform." />
 </svelte:head>
+
+<!-- Full-page animated grid background -->
+<div class="fixed inset-0 bg-background grid-background grid-background-animated -z-10"></div>
 
 <div class="container max-w-4xl py-8">
 	<!-- Breadcrumbs -->
@@ -38,19 +47,19 @@
 	</div>
 
 	<div class="space-y-6 mb-8">
-		<div class="flex items-center space-x-2">
-			<Smartphone class="h-8 w-8 text-green-600" />
+		<div class="flex items-center space-x-2 hero-title">
+			<Smartphone class="h-8 w-8 text-indigo-600" />
 			<h1 class="font-heading text-3xl sm:text-4xl">Deeplinks Integration</h1>
 		</div>
-		<p class="text-muted-foreground text-lg max-w-3xl">
+		<p class="text-muted-foreground text-lg max-w-3xl hero-description">
 			Integrate delivery features into your mobile or web application using deeplinks. Redirect users to the Velourcity app with pre-populated delivery information.
 		</p>
-		<Badge variant="outline">Simple • Fast Setup • No API Keys Required</Badge>
+		<Badge variant="outline" class="hero-badge">Simple • Fast Setup • No API Keys Required</Badge>
 	</div>
 
 	<!-- URL Format -->
 	<section class="mb-12">
-		<Card>
+		<Card class="feature-card">
 			<CardHeader>
 				<CardTitle class="text-xl">URL Format</CardTitle>
 				<CardDescription>
@@ -72,7 +81,7 @@
 
 	<!-- Parameters -->
 	<section class="mb-12">
-		<Card>
+		<Card class="feature-card">
 			<CardHeader>
 				<CardTitle class="text-xl">URL Parameters</CardTitle>
 				<CardDescription>
@@ -130,7 +139,7 @@
 
 	<!-- Implementation Examples -->
 	<section class="mb-12">
-		<Card>
+		<Card class="feature-card">
 			<CardHeader>
 				<CardTitle class="text-xl">Implementation Examples</CardTitle>
 				<CardDescription>
@@ -140,23 +149,144 @@
 			<CardContent class="space-y-6">
 				<div>
 					<h4 class="font-semibold mb-2">JavaScript / React</h4>
-				<div class="bg-muted p-4 rounded-lg">
-					<p class="text-sm text-muted-foreground italic">TODO: Add JavaScript/React code example for creating delivery links</p>
-				</div>
+					<pre class="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
+						
+						<!-- <code>
+							// Function to create delivery deeplink
+const createDeliveryLink = (pickupAddress, dropoffAddress, partnerId, options = {}) => {
+  const baseUrl = 'https://app.velourcity.com/delivery';
+  const params = new URLSearchParams({
+    pickup_address: pickupAddress,
+    dropoff_address: dropoffAddress,
+    partner_id: partnerId,
+    ...options
+  });
+  
+  return `${baseUrl}?${params.toString()}`;
+};
+
+// React component example
+const DeliveryButton = () => {
+  const handleDelivery = () => {
+    const deliveryUrl = createDeliveryLink(
+      '123 Restaurant Street, New York, NY 10001',
+      '456 Customer Ave, New York, NY 10002',
+      'your_partner_id',
+      {
+        callback_url: 'https://yourapp.com/delivery/complete',
+        delivery_instructions: 'Leave at door'
+      }
+    );
+    
+    window.open(deliveryUrl, '_blank');
+  };
+  
+  return (
+    &lt;button onClick={handleDelivery}&gt;
+      Request Delivery
+    &lt;/button&gt;
+  );
+};</code></pre>
 				</div>
 				
 				<div>
 					<h4 class="font-semibold mb-2">iOS (Swift)</h4>
-					<div class="bg-muted p-4 rounded-lg">
-						<p class="text-sm text-muted-foreground italic">TODO: Add iOS Swift code example for opening delivery deeplinks</p>
-					</div>
+					<pre class="bg-muted p-4 rounded-lg overflow-x-auto text-sm"><code>import UIKit
+
+class DeliveryManager {
+    static func createDeliveryURL(pickupAddress: String, 
+                                 dropoffAddress: String, 
+                                 partnerId: String,
+                                 callbackUrl: String? = nil) -> URL? {
+        
+        var components = URLComponents(string: "https://app.velourcity.com/delivery")
+        
+        var queryItems = [
+            URLQueryItem(name: "pickup_address", value: pickupAddress),
+            URLQueryItem(name: "dropoff_address", value: dropoffAddress),
+            URLQueryItem(name: "partner_id", value: partnerId)
+        ]
+        
+        if let callbackUrl = callbackUrl {
+            queryItems.append(URLQueryItem(name: "callback_url", value: callbackUrl))
+        }
+        
+        components?.queryItems = queryItems
+        return components?.url
+    }
+    
+    static func requestDelivery() {
+        guard let url = createDeliveryURL(
+            pickupAddress: "123 Restaurant Street, New York, NY 10001",
+            dropoffAddress: "456 Customer Ave, New York, NY 10002",
+            partnerId: "your_partner_id",
+            callbackUrl: "yourapp://delivery/complete"
+        ) else { return }
+        
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        } else {
+            // Handle app not installed - redirect to App Store
+            let appStoreURL = URL(string: "https://apps.apple.com/app/velourcity")
+            UIApplication.shared.open(appStoreURL!)
+        }
+    }
+}</code> -->
+
+</pre>
 				</div>
 				
 				<div>
 					<h4 class="font-semibold mb-2">Android (Java)</h4>
-					<div class="bg-muted p-4 rounded-lg">
-						<p class="text-sm text-muted-foreground italic">TODO: Add Android Java code example for opening delivery deeplinks</p>
-					</div>
+					<pre class="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
+<!-- 						
+						<code>import android.content.Intent;
+import android.net.Uri;
+import android.content.Context;
+import android.content.pm.PackageManager;
+
+public class DeliveryManager {
+    
+    public static String createDeliveryUrl(String pickupAddress, 
+                                          String dropoffAddress, 
+                                          String partnerId,
+                                          String callbackUrl) {
+        
+        Uri.Builder builder = Uri.parse("https://app.velourcity.com/delivery").buildUpon();
+        
+        builder.appendQueryParameter("pickup_address", pickupAddress)
+               .appendQueryParameter("dropoff_address", dropoffAddress)
+               .appendQueryParameter("partner_id", partnerId);
+        
+        if (callbackUrl != null) {
+            builder.appendQueryParameter("callback_url", callbackUrl);
+        }
+        
+        return builder.build().toString();
+    }
+    
+    public static void requestDelivery(Context context) {
+        String deliveryUrl = createDeliveryUrl(
+            "123 Restaurant Street, New York, NY 10001",
+            "456 Customer Ave, New York, NY 10002",
+            "your_partner_id",
+            "yourapp://delivery/complete"
+        );
+        
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(deliveryUrl));
+        
+        // Check if Velourcity app is installed
+        PackageManager pm = context.getPackageManager();
+        if (intent.resolveActivity(pm) != null) {
+            context.startActivity(intent);
+        } else {
+            // Redirect to Play Store if app not installed
+            Intent playStoreIntent = new Intent(Intent.ACTION_VIEW, 
+                Uri.parse("market://details?id=com.velourcity.app"));
+            context.startActivity(playStoreIntent);
+        }
+    }
+}</code></pre> -->
 				</div>
 			</CardContent>
 		</Card>
@@ -164,7 +294,7 @@
 
 	<!-- Best Practices -->
 	<section class="mb-12">
-		<Card>
+		<Card class="feature-card">
 			<CardHeader>
 				<CardTitle class="text-xl">Best Practices</CardTitle>
 			</CardHeader>
@@ -202,7 +332,7 @@
 			<p class="text-muted-foreground mb-6">
 				Get your partner ID and start redirecting users to Velourcity for seamless delivery experiences.
 			</p>
-			<Button href="/developers/signup">
+			<Button href="/developers/signup" class="bg-purple-600 hover:bg-purple-700 text-white">
 				Get Partner ID
 			</Button>
 		</div>

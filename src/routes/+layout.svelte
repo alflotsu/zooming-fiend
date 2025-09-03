@@ -4,8 +4,10 @@
 	import { Button } from '$lib/components/ui/button';
 	import ThemeToggle from '$lib/components/theme-toggle.svelte';
 	import { themeStore } from '$lib/stores/ThemeStore';
-	import { Smartphone, Code, FileText, ChevronDown } from 'lucide-svelte';
+	import { Smartphone, Code, FileText, ChevronDown, User, LogOut } from 'lucide-svelte';
 	import { onMount } from 'svelte';
+	import { invalidate } from '$app/navigation';
+	import { page } from '$app/stores';
 	import {
 		DropdownMenu,
 		DropdownMenuContent,
@@ -15,7 +17,9 @@
 		DropdownMenuTrigger,
 	} from '$lib/components/ui/dropdown-menu';
 	
-	let { children } = $props();
+	let { children, data } = $props();
+	
+	const { supabase, session, user } = $derived(data);
 	
 	// Apply theme changes to document
 	$effect(() => {
@@ -27,6 +31,21 @@
 			}
 		}
 	});
+	
+	// Listen for auth state changes
+	onMount(() => {
+		const { data } = supabase.auth.onAuthStateChange((event, _session) => {
+			if (_session?.expires_at !== session?.expires_at) {
+				invalidate('supabase:auth');
+			}
+		});
+		
+		return () => data.subscription.unsubscribe();
+	});
+	
+	async function handleSignOut() {
+		await supabase.auth.signOut();
+	}
 </script>
 
 <svelte:head>
@@ -124,6 +143,45 @@
 				</div>
 				<nav class="flex items-center space-x-2">
 					<ThemeToggle />
+					{#if session && user}
+						<!-- Authenticated user dropdown -->
+						<DropdownMenu>
+							<DropdownMenuTrigger class="flex items-center space-x-2 text-sm font-medium transition-colors hover:text-primary focus:outline-none">
+								<User class="h-4 w-4" />
+								<span>{user.email}</span>
+								<ChevronDown class="h-3 w-3" />
+							</DropdownMenuTrigger>
+							<DropdownMenuContent align="end" class="w-56">
+								<DropdownMenuLabel>My Account</DropdownMenuLabel>
+								<DropdownMenuSeparator />
+								<DropdownMenuItem>
+									<a href="/profile" class="flex w-full">
+										Profile
+									</a>
+								</DropdownMenuItem>
+								<DropdownMenuItem>
+									<a href="/dashboard" class="flex w-full">
+										Dashboard
+									</a>
+								</DropdownMenuItem>
+								<DropdownMenuSeparator />
+								<DropdownMenuItem>
+									<button onclick={handleSignOut} class="flex w-full items-center space-x-2">
+										<LogOut class="h-4 w-4" />
+										<span>Sign out</span>
+									</button>
+								</DropdownMenuItem>
+							</DropdownMenuContent>
+						</DropdownMenu>
+					{:else}
+						<!-- Authentication buttons for non-authenticated users -->
+						<Button variant="ghost" size="sm" href="/auth/login">
+							Sign in
+						</Button>
+						<Button variant="default" size="sm" href="/auth/signup">
+							Sign up
+						</Button>
+					{/if}
 					<Button variant="outline" size="sm" href="https://apps.apple.com/app/velourcity" class="focus-visible-ring">
 						<Smartphone class="mr-1 h-3 w-3" />
 						Download App

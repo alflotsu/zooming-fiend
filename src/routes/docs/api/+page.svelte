@@ -40,7 +40,7 @@
 
 	<div class="space-y-6 mb-8">
 		<div class="flex items-center space-x-2">
-			<Code class="h-8 w-8 text-blue-600" />
+			<Code class="h-8 w-8 text-purple-600" />
 			<h1 class="font-heading text-3xl sm:text-4xl">REST API Reference</h1>
 		</div>
 		<p class="text-muted-foreground text-lg max-w-3xl">
@@ -67,7 +67,7 @@
 				</p>
 				<pre class="bg-muted p-4 rounded-lg overflow-x-auto text-sm"><code>Authorization: Bearer YOUR_API_KEY</code></pre>
 				<p class="text-sm text-muted-foreground">
-					You can obtain your API key by <a href="/developers/signup" class="text-primary hover:underline">signing up for developer access</a>.
+					You can obtain your API key by <a href="/developers/signup" class="text-purple-600 hover:text-purple-700 hover:underline">signing up for developer access</a>.
 				</p>
 			</CardContent>
 		</Card>
