@@ -52,10 +52,11 @@
 </svelte:head>
 
 <style>
-	/* Animated triangles background with stroke animations */
+	/* Animated triangles background with theme-specific SVGs */
 	.triangle-stroke-animate {
+		background-image: url('/grid_triangles_animated_light.svg?v=2');
 		background-size: 512px 512px;
-		color: hsl(var(--primary) / 0.10);
+		opacity: 1;
 		animation: triangle-fade-in 3s ease-out forwards;
 	}
 	
@@ -70,8 +71,10 @@
 		}
 	}
 	
-	.dark .triangle-stroke-animate {
-		color: hsl(var(--primary) / 0.06);
+	:global(.dark) .triangle-stroke-animate {
+		/* Use blue SVG in dark mode */
+		background-image: url('/grid_triangles_animated_dark.svg?v=2') !important;
+		opacity: 1;
 	}
 	
 	/* Pulse animation for additional effect */
@@ -91,8 +94,10 @@
 
 <!-- Full Page Triangle Background -->
 <div class="fixed inset-0 -z-50">
+	<!-- Background base -->
+	<div class="absolute inset-0 bg-background"></div>
 	<!-- Animated triangle strokes for both light and dark mode -->
-	<div class="absolute inset-0 bg-[url('/grid_triangles_animated.svg')] bg-repeat triangle-stroke-animate triangle-pulse"></div>
+	<div class="absolute inset-0 bg-repeat triangle-stroke-animate triangle-pulse"></div>
 	<!-- Subtle gradient overlay -->
 	<div class="absolute inset-0 bg-gradient-to-br from-background/88 via-background/55 to-background/88"></div>
 </div>

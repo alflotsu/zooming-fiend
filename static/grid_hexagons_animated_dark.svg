@@ -5,45 +5,45 @@
   
   <!-- Hexagon grid with single traveling gap -->
   <defs>
-    <pattern id="hexGridAnim" width="64" height="55.43" patternUnits="userSpaceOnUse">
+    <pattern id="hexGridAnim" width="256" height="221.72" patternUnits="userSpaceOnUse">
       <!-- Hexagon with single traveling gap -->
-      <polygon points="32,4 46,14.5 46,35.93 32,46.43 18,35.93 18,14.5" 
+      <polygon points="128,16 184,58 184,143.72 128,185.72 72,143.72 72,58" 
                fill="none" 
                stroke="#3b82f6"
                stroke-opacity="0.6"
-               stroke-width="1"
-               stroke-dasharray="90 10"
+               stroke-width="4"
+               stroke-dasharray="360 40"
                stroke-dashoffset="0">
         <animate attributeName="stroke-dashoffset" 
-                 values="0;100;0" 
+                 values="0;400;0" 
                  dur="4s" 
                  repeatCount="indefinite"/>
       </polygon>
     </pattern>
     
     <!-- Offset pattern for honeycomb effect with staggered timing -->
-    <pattern id="hexGridOffsetAnim" width="64" height="55.43" patternUnits="userSpaceOnUse">
-      <polygon points="0,27.71 14,38.21 14,59.64 0,70.14 -14,59.64 -14,38.21" 
+    <pattern id="hexGridOffsetAnim" width="256" height="221.72" patternUnits="userSpaceOnUse">
+      <polygon points="0,110.84 56,152.84 56,238.56 0,280.56 -56,238.56 -56,152.84" 
                fill="none" 
                stroke="#3b82f6" 
                stroke-opacity="0.5"
-               stroke-width="1"
-               stroke-dasharray="90 10"
-               stroke-dashoffset="25">
+               stroke-width="4"
+               stroke-dasharray="360 40"
+               stroke-dashoffset="100">
         <animate attributeName="stroke-dashoffset" 
-                 values="25;125;25" 
+                 values="100;500;100" 
                  dur="4.2s" 
                  repeatCount="indefinite"/>
       </polygon>
-      <polygon points="64,27.71 78,38.21 78,59.64 64,70.14 50,59.64 50,38.21" 
+      <polygon points="256,110.84 312,152.84 312,238.56 256,280.56 200,238.56 200,152.84" 
                fill="none" 
                stroke="#3b82f6" 
                stroke-opacity="0.4"
-               stroke-width="1"
-               stroke-dasharray="90 10"
-               stroke-dashoffset="50">
+               stroke-width="4"
+               stroke-dasharray="360 40"
+               stroke-dashoffset="200">
         <animate attributeName="stroke-dashoffset" 
-                 values="50;150;50" 
+                 values="200;600;200" 
                  dur="4.8s" 
                  repeatCount="indefinite"/>
       </polygon>
@@ -51,6 +51,6 @@
   </defs>
   
   <!-- Apply animated hexagon patterns -->
-  <rect width="1024" height="512" y="0" fill="url(#hexGridAnim)"/>
-  <rect width="1024" height="512" y="27.72" fill="url(#hexGridOffsetAnim)"/>
+  <rect width="1024" height="1024" y="0" fill="url(#hexGridAnim)"/>
+  <rect width="1024" height="1024" y="110.88" fill="url(#hexGridOffsetAnim)"/>
 </svg>

@@ -112,6 +112,10 @@
   body {
     @apply bg-background text-foreground font-sans;
   }
+  
+  .dark body {
+    background: transparent;
+  }
 }
 
 @layer utilities {

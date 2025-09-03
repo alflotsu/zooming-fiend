@@ -38,6 +38,8 @@
 
 <!-- Full Page Grid Background -->
 <div class="fixed inset-0 -z-50">
+	<!-- Background base -->
+	<div class="absolute inset-0 bg-background"></div>
 	<!-- Light mode grid (gray) with animation -->
 	<div class="absolute inset-0 bg-[url('/grid.svg')] bg-repeat opacity-40 dark:hidden grid-animate"></div>
 	<!-- Dark mode grid (blue) with animation -->

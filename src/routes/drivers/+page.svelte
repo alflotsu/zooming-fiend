@@ -37,17 +37,18 @@
 </svelte:head>
 
 <style>
-	/* Animated circles background with stroke animations */
-	.circle-stroke-animate {
+	/* Animated polygons background with theme-specific SVGs */
+	.polygon-stroke-animate {
+		background-image: url('/grid_polygons_animated_light.svg?v=2');
 		background-size: 512px 512px;
-		color: hsl(var(--primary) / 0.12);
-		animation: circle-fade-in 2.5s ease-out forwards;
+		opacity: 1;
+		animation: polygon-fade-in 3s ease-out forwards;
 	}
 	
-	@keyframes circle-fade-in {
+	@keyframes polygon-fade-in {
 		0% {
 			opacity: 0;
-			background-size: 800px 800px;
+			background-size: 768px 768px;
 		}
 		100% {
 			opacity: 1;
@@ -55,12 +56,14 @@
 		}
 	}
 	
-	.dark .circle-stroke-animate {
-		color: hsl(var(--primary) / 0.18);
+	:global(.dark) .polygon-stroke-animate {
+		/* Use blue SVG in dark mode */
+		background-image: url('/grid_polygons_animated_dark.svg?v=2') !important;
+		opacity: 1;
 	}
 	
 	/* Pulse animation for additional effect */
-	.circle-pulse {
+	.polygon-pulse {
 		animation: pulse-opacity 5s ease-in-out infinite;
 	}
 	
@@ -74,12 +77,14 @@
 	}
 </style>
 
-<!-- Full Page Circle Background -->
+<!-- Full Page Polygon Background -->
 <div class="fixed inset-0 -z-50">
-	<!-- Animated circle strokes for both light and dark mode -->
-	<div class="absolute inset-0 bg-[url('/grid_circles_animated.svg')] bg-repeat circle-stroke-animate circle-pulse"></div>
+	<!-- Background base -->
+	<div class="absolute inset-0 bg-background"></div>
+	<!-- Animated polygon strokes for both light and dark mode -->
+	<div class="absolute inset-0 bg-repeat polygon-stroke-animate polygon-pulse"></div>
 	<!-- Subtle gradient overlay -->
-	<div class="absolute inset-0 bg-gradient-to-br from-background/85 via-background/50 to-background/85"></div>
+	<div class="absolute inset-0 bg-gradient-to-br from-background/90 via-background/60 to-background/90"></div>
 </div>
 
 <div class="min-h-screen">

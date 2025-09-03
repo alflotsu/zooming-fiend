@@ -6,11 +6,10 @@
   <!-- Animated triangles grid with single traveling gap -->
   <defs>
     <!-- Main triangle pattern -->
-    <pattern id="triangleGridAnim" width="64" height="64" patternUnits="userSpaceOnUse">
+    <pattern id="triangleGridAnimV2" width="64" height="64" patternUnits="userSpaceOnUse">
       <polygon points="32,8 8,52 56,52" 
                fill="none" 
-               stroke="#3b82f6" 
-               stroke-opacity="0.5"
+               stroke="currentColor" 
                stroke-width="1"
                stroke-dasharray="120 12"
                stroke-dashoffset="0">
@@ -22,12 +21,11 @@
     </pattern>
     
     <!-- Mixed orientation pattern for variety -->
-    <pattern id="triangleGridMixed" width="128" height="128" patternUnits="userSpaceOnUse">
+    <pattern id="triangleGridMixedV2" width="128" height="128" patternUnits="userSpaceOnUse">
       <!-- Upward triangles -->
       <polygon points="32,8 8,52 56,52" 
                fill="none" 
-               stroke="#3b82f6" 
-               stroke-opacity="0.4"
+               stroke="currentColor" 
                stroke-width="1"
                stroke-dasharray="120 12"
                stroke-dashoffset="33">
@@ -38,8 +36,7 @@
       </polygon>
       <polygon points="96,8 72,52 120,52" 
                fill="none" 
-               stroke="#3b82f6" 
-               stroke-opacity="0.3"
+               stroke="currentColor" 
                stroke-width="1"
                stroke-dasharray="120 12"
                stroke-dashoffset="66">
@@ -52,8 +49,7 @@
       <!-- Downward triangles -->
       <polygon points="64,72 40,116 88,116" 
                fill="none" 
-               stroke="#3b82f6" 
-               stroke-opacity="0.4"
+               stroke="currentColor" 
                stroke-width="1"
                stroke-dasharray="120 12"
                stroke-dashoffset="99">
@@ -66,6 +62,6 @@
   </defs>
   
   <!-- Layer patterns for complex triangular effects -->
-  <rect width="1024" height="1024" fill="url(#triangleGridAnim)"/>
-  <rect width="1024" height="1024" fill="url(#triangleGridMixed)" opacity="0.5"/>
+  <rect width="1024" height="1024" fill="url(#triangleGridAnimV2)"/>
+  <rect width="1024" height="1024" fill="url(#triangleGridMixedV2)" opacity="0.5"/>
 </svg>

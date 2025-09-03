@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- Transparent background for overlay -->
+  <rect width="1024" height="1024" fill="none"/>
+  
+  <!-- Polygon grid with animated strokes -->
+  <defs>
+    <pattern id="polygonGridAnim" width="320" height="320" patternUnits="userSpaceOnUse">
+      <!-- Pentagon with traveling gap -->
+      <polygon points="160,32 240,100 208,192 112,192 80,100" 
+               fill="none" 
+               stroke="#000000" 
+               stroke-opacity="0.6"
+               stroke-width="6"
+               stroke-dasharray="280 60"
+               stroke-dashoffset="0">
+        <animate attributeName="stroke-dashoffset" 
+                 values="0;340;0" 
+                 dur="5s" 
+                 repeatCount="indefinite"/>
+      </polygon>
+      
+      <!-- Triangle with offset animation -->
+      <polygon points="40,260 120,260 80,192" 
+               fill="none" 
+               stroke="#000000" 
+               stroke-opacity="0.5"
+               stroke-width="4.8"
+               stroke-dasharray="180 40"
+               stroke-dashoffset="80">
+        <animate attributeName="stroke-dashoffset" 
+                 values="80;300;80" 
+                 dur="3.8s" 
+                 repeatCount="indefinite"/>
+      </polygon>
+      
+      <!-- Hexagon with different timing -->
+      <polygon points="260,260 300,232 300,192 260,164 220,192 220,232" 
+               fill="none" 
+               stroke="#000000" 
+               stroke-opacity="0.4"
+               stroke-width="4"
+               stroke-dasharray="240 48"
+               stroke-dashoffset="120">
+        <animate attributeName="stroke-dashoffset" 
+                 values="120;408;120" 
+                 dur="4.5s" 
+                 repeatCount="indefinite"/>
+      </polygon>
+    </pattern>
+    
+    <!-- Offset pattern for variety -->
+    <pattern id="polygonGridOffsetAnim" width="320" height="320" patternUnits="userSpaceOnUse">
+      <!-- Octagon -->
+      <polygon points="100,48 140,48 168,76 168,116 140,144 100,144 72,116 72,76" 
+               fill="none" 
+               stroke="#000000" 
+               stroke-opacity="0.3"
+               stroke-width="4"
+               stroke-dasharray="320 60"
+               stroke-dashoffset="160">
+        <animate attributeName="stroke-dashoffset" 
+                 values="160;540;160" 
+                 dur="6s" 
+                 repeatCount="indefinite"/>
+      </polygon>
+      
+      <!-- Diamond -->
+      <polygon points="240,100 280,140 240,180 200,140" 
+               fill="none" 
+               stroke="#000000" 
+               stroke-opacity="0.4"
+               stroke-width="5.2"
+               stroke-dasharray="200 32"
+               stroke-dashoffset="60">
+        <animate attributeName="stroke-dashoffset" 
+                 values="60;292;60" 
+                 dur="4.2s" 
+                 repeatCount="indefinite"/>
+      </polygon>
+    </pattern>
+  </defs>
+  
+  <!-- Apply animated polygon patterns -->
+  <rect width="1024" height="1024" fill="url(#polygonGridAnim)"/>
+  <rect width="1024" height="1024" fill="url(#polygonGridOffsetAnim)" opacity="0.6"/>
+</svg>

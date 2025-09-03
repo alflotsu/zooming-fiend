@@ -132,26 +132,29 @@
 </svelte:head>
 
 <style>
-	/* Animated hexagon background with stroke animations */
+	/* Animated hexagons background with theme-specific SVGs */
 	.hexagon-stroke-animate {
-		background-size: 1600px 1600px;
-		color: hsl(var(--primary) / 0.15);
-		animation: hexagon-fade-in 2s ease-out forwards;
+		background-image: url('/grid_hexagons_animated_light.svg?v=2');
+		background-size: 512px 512px;
+		opacity: 1;
+		animation: hexagon-fade-in 3s ease-out forwards;
 	}
 	
 	@keyframes hexagon-fade-in {
 		0% {
 			opacity: 0;
-			background-size: 2000px 2000px;
+			background-size: 768px 768px;
 		}
 		100% {
 			opacity: 1;
-			background-size: 1600px 1600px;
+			background-size: 512px 512px;
 		}
 	}
 	
-	.dark .hexagon-stroke-animate {
-		color: hsl(var(--primary) / 0.15);
+	:global(.dark) .hexagon-stroke-animate {
+		/* Use blue SVG in dark mode */
+		background-image: url('/grid_hexagons_animated_dark.svg?v=2') !important;
+		opacity: 1;
 	}
 	
 	/* Pulse animation for additional effect */
@@ -171,8 +174,10 @@
 
 <!-- Full Page Hexagon Background -->
 <div class="fixed inset-0 -z-50">
+	<!-- Background base -->
+	<div class="absolute inset-0 bg-background"></div>
 	<!-- Animated hexagon strokes for both light and dark mode -->
-	<div class="absolute inset-0 bg-[url('/grid_hexagons_animated.svg')] bg-repeat hexagon-stroke-animate hexagon-pulse"></div>
+	<div class="absolute inset-0 bg-repeat hexagon-stroke-animate hexagon-pulse"></div>
 	<!-- Subtle gradient overlay -->
 	<div class="absolute inset-0 bg-gradient-to-br from-background/90 via-background/60 to-background/90"></div>
 </div>
