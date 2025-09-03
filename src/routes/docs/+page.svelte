@@ -220,4 +220,24 @@
 			</div>
 		</div>
 	</section>
+
+	<!-- Examples Section -->
+	<section id="examples" class="mt-12">
+		<h2 class="text-2xl font-semibold mb-4">Code Examples</h2>
+		<div class="bg-muted/30 rounded-lg p-6">
+			<p class="text-muted-foreground">
+				Code examples and sample implementations are coming soon. Check back later for practical integration examples.
+			</p>
+		</div>
+	</section>
+
+	<!-- Support Section -->
+	<section id="support" class="mt-8">
+		<h2 class="text-2xl font-semibold mb-4">Support</h2>
+		<div class="bg-muted/30 rounded-lg p-6">
+			<p class="text-muted-foreground">
+				Developer support resources and community forums will be available soon. For immediate assistance, please contact our support team.
+			</p>
+		</div>
+	</section>
 </div>
