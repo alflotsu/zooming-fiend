@@ -57,10 +57,10 @@
 			🚀 Fast & Reliable Delivery
 		</Badge>
 		<h1 class="hero-title font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-			Your packages, <span class="text-primary">delivered</span>
+			Anything, <span class="text-primary">anywhere</span>
 		</h1>
 		<p class="hero-description max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-			Fast, reliable delivery service at your fingertips. Get your food, groceries, packages, and more with just a few taps.
+			Order food, send packages across town, get groceries delivered, or move anything you need. Fast, reliable delivery at your fingertips.
 		</p>
 		<div class="hero-buttons flex flex-col gap-4 sm:flex-row">
 			<Button size="lg" href="https://apps.apple.com/app/velourcity" class="h-11 px-8">

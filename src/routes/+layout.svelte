@@ -148,13 +148,16 @@
 				</p>
 			</div>
 			<div class="flex items-center space-x-4">
+				<a href="/about" class="text-sm text-muted-foreground hover:text-foreground">
+					About
+				</a>
 				<a href="/docs" class="text-sm text-muted-foreground hover:text-foreground">
 					Documentation
 				</a>
 				<a href="/developers" class="text-sm text-muted-foreground hover:text-foreground">
 					Developers
 				</a>
-				<a href="mailto:support@velourcity.com" class="text-sm text-muted-foreground hover:text-foreground">
+				<a href="/support" class="text-sm text-muted-foreground hover:text-foreground">
 					Support
 				</a>
 			</div>
