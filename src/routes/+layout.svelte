@@ -2,11 +2,18 @@
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import { Button } from '$lib/components/ui/button';
-	import { NavigationMenuRoot, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '$lib/components/ui/navigation-menu';
 	import ThemeToggle from '$lib/components/theme-toggle.svelte';
 	import { themeStore } from '$lib/stores/ThemeStore';
-	import { Smartphone, Code, FileText } from 'lucide-svelte';
+	import { Smartphone, Code, FileText, ChevronDown } from 'lucide-svelte';
 	import { onMount } from 'svelte';
+	import {
+		DropdownMenu,
+		DropdownMenuContent,
+		DropdownMenuItem,
+		DropdownMenuLabel,
+		DropdownMenuSeparator,
+		DropdownMenuTrigger,
+	} from '$lib/components/ui/dropdown-menu';
 	
 	let { children } = $props();
 	
@@ -57,50 +64,53 @@
 					<Smartphone class="h-6 w-6" />
 					<span class="hidden font-bold sm:inline-block">Velourcity</span>
 				</a>
-				<NavigationMenuRoot>
-					<NavigationMenuList>
-						<NavigationMenuItem>
-							<NavigationMenuLink href="/" class="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50">
-								Home
-							</NavigationMenuLink>
-						</NavigationMenuItem>
-						<NavigationMenuItem>
-							<NavigationMenuTrigger>Developers</NavigationMenuTrigger>
-							<NavigationMenuContent>
-								<div class="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-									<div class="row-span-3">
-										<NavigationMenuLink href="/developers" class="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md">
-											<Code class="h-6 w-6" />
-											<div class="mb-2 mt-4 text-lg font-medium">
-												Developer Platform
-											</div>
-											<p class="text-sm leading-tight text-muted-foreground">
-												Integrate delivery features into your app with our REST API and deeplinks.
-											</p>
-										</NavigationMenuLink>
-									</div>
-									<NavigationMenuLink href="/developers/signup" class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-										<div class="text-sm font-medium leading-none">Get Started</div>
-										<p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
-											Sign up for API access and start integrating.
-										</p>
-									</NavigationMenuLink>
-									<NavigationMenuLink href="/docs" class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-										<div class="text-sm font-medium leading-none">Documentation</div>
-										<p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
-											API reference, guides, and examples.
-										</p>
-									</NavigationMenuLink>
-								</div>
-							</NavigationMenuContent>
-						</NavigationMenuItem>
-						<NavigationMenuItem>
-							<NavigationMenuLink href="/docs" class="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50">
-								Docs
-							</NavigationMenuLink>
-						</NavigationMenuItem>
-					</NavigationMenuList>
-				</NavigationMenuRoot>
+				<nav class="flex items-center space-x-4">
+					<a href="/" class="text-sm font-medium transition-colors hover:text-primary">
+						Home
+					</a>
+					<DropdownMenu>
+						<DropdownMenuTrigger class="flex items-center space-x-1 text-sm font-medium transition-colors hover:text-primary focus:outline-none">
+							<span>Developers</span>
+							<ChevronDown class="h-3 w-3" />
+						</DropdownMenuTrigger>
+						<DropdownMenuContent align="start" class="w-56">
+							<DropdownMenuLabel class="flex items-center space-x-2">
+								<Code class="h-4 w-4" />
+								<span>Developer Platform</span>
+							</DropdownMenuLabel>
+							<DropdownMenuSeparator />
+							<DropdownMenuItem>
+								<a href="/developers" class="flex w-full">
+									Overview
+								</a>
+							</DropdownMenuItem>
+							<DropdownMenuItem>
+								<a href="/developers/signup" class="flex w-full">
+									Get Started
+								</a>
+							</DropdownMenuItem>
+							<DropdownMenuItem>
+								<a href="/docs" class="flex w-full">
+									Documentation
+								</a>
+							</DropdownMenuItem>
+							<DropdownMenuSeparator />
+							<DropdownMenuItem>
+								<a href="/docs/api" class="flex w-full">
+									API Reference
+								</a>
+							</DropdownMenuItem>
+							<DropdownMenuItem>
+								<a href="/docs/deeplinks" class="flex w-full">
+									Deeplinks
+								</a>
+							</DropdownMenuItem>
+						</DropdownMenuContent>
+					</DropdownMenu>
+					<a href="/docs" class="text-sm font-medium transition-colors hover:text-primary">
+						Docs
+					</a>
+				</nav>
 			</div>
 			<div class="flex flex-1 items-center justify-between space-x-2 md:justify-end">
 				<div class="w-full flex-1 md:w-auto md:flex-none">
