@@ -204,6 +204,21 @@
     background-size: 200px 200px;
   }
   
+  .grid-background {
+    background-image: radial-gradient(circle at 25px 25px, rgba(139, 92, 246, 0.1) 2px, transparent 0), radial-gradient(circle at 75px 25px, rgba(139, 92, 246, 0.05) 1px, transparent 0), radial-gradient(circle at 25px 75px, rgba(139, 92, 246, 0.05) 1px, transparent 0), radial-gradient(circle at 75px 75px, rgba(139, 92, 246, 0.1) 2px, transparent 0);
+    background-size: 100px 100px;
+    opacity: 0.3;
+  }
+  
+  .dark .grid-background {
+    background-image: radial-gradient(circle at 25px 25px, rgba(139, 92, 246, 0.15) 2px, transparent 0), radial-gradient(circle at 75px 25px, rgba(139, 92, 246, 0.08) 1px, transparent 0), radial-gradient(circle at 25px 75px, rgba(139, 92, 246, 0.08) 1px, transparent 0), radial-gradient(circle at 75px 75px, rgba(139, 92, 246, 0.15) 2px, transparent 0);
+    opacity: 0.2;
+  }
+  
+  .grid-background-animated {
+    animation: grid-fade-in 2s ease-out forwards;
+  }
+  
   @keyframes grid-grow {
     0% {
       background-size: 200px 200px;
@@ -240,6 +255,28 @@
     }
     100% {
       background-size: 64px 64px;
+      opacity: 0.2;
+    }
+  }
+  
+  @keyframes grid-fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0.3;
+    }
+  }
+  
+  .dark .grid-background-animated {
+    animation: grid-fade-in-dark 2s ease-out forwards;
+  }
+  
+  @keyframes grid-fade-in-dark {
+    0% {
+      opacity: 0;
+    }
+    100% {
       opacity: 0.2;
     }
   }

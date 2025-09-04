@@ -10,6 +10,7 @@
 	import { Play, Code, Copy, Download, Settings, Zap, CheckCircle, AlertTriangle, Loader2 } from 'lucide-svelte';
 	import { onMount } from 'svelte';
 	import { initializeAnimations } from '$lib/utils/animations';
+	import BubbleBackground from '$lib/components/BubbleBackground.svelte';
 
 	onMount(() => {
 		initializeAnimations();
@@ -206,8 +207,8 @@ else:
 	<meta name="description" content="Interactive API explorer for testing Velourcity API endpoints." />
 </svelte:head>
 
-<!-- Full-page animated grid background -->
-<div class="fixed inset-0 bg-background grid-background grid-background-animated -z-10"></div>
+<!-- Interactive bubble background -->
+<BubbleBackground />
 
 <div class="container max-w-7xl py-8">
 	<!-- Header -->

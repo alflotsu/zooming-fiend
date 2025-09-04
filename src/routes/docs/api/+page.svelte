@@ -5,12 +5,16 @@
 	import { Badge } from '$lib/components/ui/badge';
 	import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from '$lib/components/ui/breadcrumb';
 	import { Code, ArrowLeft } from 'lucide-svelte';
+	import BubbleBackground from '$lib/components/BubbleBackground.svelte';
 </script>
 
 <svelte:head>
 	<title>API Documentation - Velourcity REST API</title>
 	<meta name="description" content="Complete REST API reference for the Velourcity delivery platform." />
 </svelte:head>
+
+<!-- Interactive bubble background -->
+<BubbleBackground />
 
 <div class="container max-w-5xl py-8">
 	<!-- Breadcrumbs -->

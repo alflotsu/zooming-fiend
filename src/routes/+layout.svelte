@@ -74,7 +74,7 @@
 	</script>
 </svelte:head>
 
-<div class="min-h-screen">
+<div class="min-h-screen bg-background">
 	<!-- Header -->
 	<header class="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
 		<div class="container flex h-14 max-w-screen-2xl items-center">
