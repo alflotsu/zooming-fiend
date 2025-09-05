@@ -326,3 +326,13 @@
     line-height: 1.2;
   }
 }
+
+ 
+	:global(.mapbox-map .mapboxgl-popup-content) {
+		@apply bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg shadow-lg;
+	}
+
+	:global(.mapbox-map .mapboxgl-popup-tip) {
+		@apply border-t-white dark:border-t-gray-800;
+	}
+ 

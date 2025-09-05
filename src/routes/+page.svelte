@@ -59,7 +59,7 @@
 			🚀 Fast & Reliable Delivery
 		</Badge>
 		<h1 class="hero-title font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-			Anything, <span class="text-primary">anywhere</span>
+			Anything delivered, <span class="text-primary">anywhere</span>
 		</h1>
 		<p class="hero-description max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
 			Order food, send packages across town, get groceries delivered, or move anything you need. Fast, reliable delivery at your fingertips.
